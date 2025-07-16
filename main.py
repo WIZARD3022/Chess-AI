@@ -18,11 +18,33 @@ def main():
 
     board = Board(WIDTH, HEIGHT)
 
+    BE = pygame.image.load("./image/Black_elephant.png")
+    WE = pygame.image.load("./image/White_elephant.png")
+
+    BH = pygame.image.load("./image/Black_horse.png")
+    WH = pygame.image.load("./image/White_horse.png")
+
+    BK = pygame.image.load("./image/Black_King.png")
+    WK = pygame.image.load("./image/White_King.png")
+
+    BM = pygame.image.load("./image/Black_minister.png")
+    WM = pygame.image.load("./image/White_minister.png")
+
+    BP = pygame.image.load("./image/Black_pawn.png")
+    WP = pygame.image.load("./image/White_pawn.png")
+
+    BQ = pygame.image.load("./image/Black_queen.png")
+    WQ = pygame.image.load("./image/White_queen.png")
+
+    # Image = pygame.transform.scale(BE, (100, 100))
+
     # Game Loop
     running = True
     while running:
         # clock.tick(FPS)  # Limit FPS
         pygame.display.set_caption(f"Chess fps :{clock.tick(FPS)}")
+        # screen.blit(Image, (100, 100))
+        screen.blit(BE, (100, 100))
 
         # screen.fill(BLACK)  # Clear screen
 

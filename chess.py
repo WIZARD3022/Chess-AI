@@ -8,8 +8,8 @@ class Board:
         self.init_board()
 
     def init_board(self):
-        # Initialize the chess board with pieces
-        # This is a placeholder for actual piece initialization
+        
+
         pass
 
     def draw(self, screen):
