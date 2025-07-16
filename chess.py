@@ -4,7 +4,10 @@ class Board:
     def __init__(self, width, height, screen):
         self.width = width
         self.height = height
-        self.board = [[None for _ in range(8)] for _ in range(8)]
+        self.square_size = min(width, height) // 8
+        self.board = [
+            [0.035,],
+        ]
         self.init_board(screen)
 
     def init_board(self, screen):
@@ -15,11 +18,10 @@ class Board:
 
     def draw(self, screen):
         # Draw the chess board on the screen
-        square_size = min(self.width, self.height) // 8
         for row in range(8):
             for col in range(8):
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
-                pygame.draw.rect(screen, color, (col * square_size, row * square_size, square_size, square_size))
+                pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
         BE = pygame.image.load("./image/Black_elephant.png")
         BE = pygame.transform.scale(BE, (100, 100))
@@ -52,4 +54,6 @@ class Board:
         WQ = pygame.transform.scale(WQ, (100, 100))
 
         screen.blit(BE, (100, 100))
+
+
         
