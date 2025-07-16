@@ -19,24 +19,35 @@ def main():
     board = Board(WIDTH, HEIGHT)
 
     BE = pygame.image.load("./image/Black_elephant.png")
+    BE = pygame.transform.scale(BE, (100, 100))
     WE = pygame.image.load("./image/White_elephant.png")
+    WE = pygame.transform.scale(WE, (100, 100))
 
     BH = pygame.image.load("./image/Black_horse.png")
+    BH = pygame.transform.scale(BH, (100, 100))
     WH = pygame.image.load("./image/White_horse.png")
+    WH = pygame.transform.scale(WH, (100, 100))
 
     BK = pygame.image.load("./image/Black_King.png")
+    BK = pygame.transform.scale(BK, (100, 100))
     WK = pygame.image.load("./image/White_King.png")
+    WK = pygame.transform.scale(WK, (100, 100))
 
     BM = pygame.image.load("./image/Black_minister.png")
+    BM = pygame.transform.scale(BM, (100, 100))
     WM = pygame.image.load("./image/White_minister.png")
+    WM = pygame.transform.scale(WM, (100, 100))
 
     BP = pygame.image.load("./image/Black_pawn.png")
+    BP = pygame.transform.scale(BP, (100, 100))
     WP = pygame.image.load("./image/White_pawn.png")
+    WP = pygame.transform.scale(WP, (100, 100))
 
     BQ = pygame.image.load("./image/Black_queen.png")
+    BQ = pygame.transform.scale(BQ, (100, 100))
     WQ = pygame.image.load("./image/White_queen.png")
+    WQ = pygame.transform.scale(WQ, (100, 100))
 
-    BE = pygame.transform.scale(BE, (100, 100))
 
     # Game Loop
     running = True
