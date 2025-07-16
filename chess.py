@@ -18,7 +18,7 @@ class Board:
         square_size = min(self.width, self.height) // 8
         for row in range(8):
             for col in range(8):
-                color = (255, 255, 255) if (row + col) % 2 == 0 else (0, 0, 0)
+                color = (255, 155, 155) if (row + col) % 2 == 0 else (0, 0, 0)
                 pygame.draw.rect(screen, color, (col * square_size, row * square_size, square_size, square_size))
 
         BE = pygame.image.load("./image/Black_elephant.png")
@@ -52,4 +52,3 @@ class Board:
         WQ = pygame.transform.scale(WQ, (100, 100))
 
         screen.blit(BE, (100, 100))
-        
