@@ -7,39 +7,36 @@ class Board:
         self.board = [[None for _ in range(8)] for _ in range(8)]
         self.init_board(screen)
 
-    def load_image(path):
-        return pygame.transform.scale(path, (100, 100))
-
     def init_board(self, screen):
         BE = pygame.image.load("./image/Black_elephant.png")
-        BE = self.load_image(BE)
+        BE = pygame.transform.scale(BE, (100, 100))
         WE = pygame.image.load("./image/White_elephant.png")
-        WE = self.load_image(WE)
+        WE = pygame.transform.scale(WE, (100, 100))
 
         BH = pygame.image.load("./image/Black_horse.png")
-        BH = self.load_image(BH)
+        BH = pygame.transform.scale(BH, (100, 100))
         WH = pygame.image.load("./image/White_horse.png")
-        WH = self.load_image(WH)
+        WH = pygame.transform.scale(WH, (100, 100))
 
         BK = pygame.image.load("./image/Black_King.png")
-        BK = self.load_image(BK)
+        BK = pygame.transform.scale(BK, (100, 100))
         WK = pygame.image.load("./image/White_King.png")
-        WK = self.load_image(WK)
+        WK = pygame.transform.scale(WK, (100, 100))
 
         BM = pygame.image.load("./image/Black_minister.png")
-        BM = self.load_image(BM)
+        BM = pygame.transform.scale(BM, (100, 100))
         WM = pygame.image.load("./image/White_minister.png")
-        WM = self.load_image(WM)
+        WM = pygame.transform.scale(WM, (100, 100))
 
         BP = pygame.image.load("./image/Black_pawn.png")
-        BP = self.load_image(BP)
+        BP = pygame.transform.scale(BP, (100, 100))
         WP = pygame.image.load("./image/White_pawn.png")
-        WP = self.load_image(WP)
+        WP = pygame.transform.scale(WP, (100, 100))
 
         BQ = pygame.image.load("./image/Black_queen.png")
-        BQ = self.load_image(BQ)
+        BQ = pygame.transform.scale(BQ, (100, 100))
         WQ = pygame.image.load("./image/White_queen.png")
-        WQ = self.load_image(WQ)
+        WQ = pygame.transform.scale(WQ, (100, 100))
 
         screen.blit(BE, (100, 100))
 
