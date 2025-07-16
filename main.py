@@ -36,14 +36,14 @@ def main():
     BQ = pygame.image.load("./image/Black_queen.png")
     WQ = pygame.image.load("./image/White_queen.png")
 
-    Image = pygame.transform.scale(BE, (100, 100))
+    BE = pygame.transform.scale(BE, (100, 100))
 
     # Game Loop
     running = True
     while running:
         # clock.tick(FPS)  # Limit FPS
         pygame.display.set_caption(f"Chess fps :{clock.tick(FPS)}")
-        screen.blit(Image, (100, 100))
+        screen.blit(BE, (100, 100))
         # screen.blit(BE, (100, 100))
 
         # screen.fill(BLACK)  # Clear screen
