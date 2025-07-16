@@ -59,6 +59,11 @@ def main():
         # clock.tick(FPS)  # Limit FPS
         pygame.display.set_caption(f"Chess fps :{clock.tick(FPS)}")
         screen.blit(BE, (100, 100))
+        screen.blit(WE, (200, 100))
+        screen.blit(BQ, (300, 100))
+        screen.blit(WQ, (400, 100))
+        screen.blit(BK, (200, 300))
+        screen.blit(WK, (200, 300))
         # screen.blit(BE, (100, 100))
 
         # screen.fill(BLACK)  # Clear screen
