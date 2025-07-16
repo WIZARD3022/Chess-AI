@@ -52,3 +52,4 @@ class Board:
         WQ = pygame.transform.scale(WQ, (100, 100))
 
         screen.blit(BE, (100, 100))
+        
