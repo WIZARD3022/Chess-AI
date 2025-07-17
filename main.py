@@ -35,7 +35,6 @@ def main():
 
         # screen.fill(BLACK)  # Clear screen
 
-
         # Event handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
