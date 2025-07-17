@@ -67,8 +67,24 @@ class Board:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
                 elif piece == -1.25:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
+                    # black elephant
                 elif piece == -0.125:
                     screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.25:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.375:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.5:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.625:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.75:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.875:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -1:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                    # Black pawn
                 # elif piece == -1.375:
                 #     screen.blit(BH, (col * self.square_size, row * self.square_size))
                 # elif piece == -1.875:
