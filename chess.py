@@ -90,12 +90,17 @@ class Board:
                 elif piece == -1.5:
                     screen.blit(BH, (col * self.square_size, row * self.square_size))
                     # black horse
-                # elif piece == -1.875:
-                #     screen.blit(BM, (col * self.square_size, row * self.square_size))
-                # elif piece == -2:
-                #     screen.blit(BQ, (col * self.square_size, row * self.square_size))
-                # elif piece == -1.625:
-                #     screen.blit(BK, (col * self.square_size, row * self.square_size))
+                elif piece == -1.875:
+                    screen.blit(BM, (col * self.square_size, row * self.square_size))
+                elif piece == -1.75:
+                    screen.blit(BM, (col * self.square_size, row * self.square_size))
+                    # black minister
+                elif piece == -2:
+                    screen.blit(BQ, (col * self.square_size, row * self.square_size))
+                    # black queen
+                elif piece == -1.625:
+                    screen.blit(BK, (col * self.square_size, row * self.square_size))
+                    # black king
                 # elif piece == 1.125:
                 #     screen.blit(WE, (col * self.square_size, row * self.square_size))
                 # elif piece == 0.125:
