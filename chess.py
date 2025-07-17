@@ -37,7 +37,10 @@ class Board:
         else:
             print("Clicked outside the board")
     def unselect_square(self, mouse_x, mouse_y,screen):
-        pygame.draw.rect(screen, (0, 0, 0), (mouse_x, mouse_y, self.square_size, self.square_size), 3)
+        col = mouse_x // self.square_size
+        row = mouse_y // self.square_size
+        if 0 <= row < 8 and 0 <= col < 8:
+            pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
     def draw(self, screen):
         # Draw the chess board on the screen
