@@ -43,7 +43,7 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-                if event.type == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:
                     print("Space key pressed")
         board.draw(screen)
                 
