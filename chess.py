@@ -27,12 +27,13 @@ class Board:
 
         pass
 
-    def select_square(self, mouse_x, mouse_y):
+    def select_square(self, mouse_x, mouse_y,screen):
         col = mouse_x // self.square_size
         row = mouse_y // self.square_size
         if 0 <= row < 8 and 0 <= col < 8:
             piece = self.board[row][col]
             print(f"Selected piece at ({row}, {col}): {piece}")
+            pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
         else:
             print("Clicked outside the board")
 
