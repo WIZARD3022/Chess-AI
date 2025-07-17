@@ -19,17 +19,17 @@ class Board:
 
     def init_board(self, screen):
         
+        for row in range(8):
+            print(f"Drawing row {self.board[row]}")
+            for col in range(8):
+                color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
+                pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
 
         pass
 
     def draw(self, screen):
         # Draw the chess board on the screen
-        for row in range(8):
-            print(f"Drawing row {self.board[row]}")
-            for col in range(8):
-                color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
-                pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
         BE = pygame.image.load("./image/Black_elephant.png")
         BE = pygame.transform.scale(BE, (100, 100))
