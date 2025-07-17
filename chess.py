@@ -19,7 +19,7 @@ class Board:
     def init_board(self, screen):
         
         for row in range(8):
-            print(f"Drawing row {self.board[row]}")
+            # print(f"Drawing row {self.board[row]}")
             for col in range(8):
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
                 pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
@@ -60,7 +60,34 @@ class Board:
         WQ = pygame.image.load("./image/White_queen.png")
         WQ = pygame.transform.scale(WQ, (100, 100))
 
-        screen.blit(BE, (100, 100))
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece == -1.125:
+                    screen.blit(BE, (col * self.square_size, row * self.square_size))
+                elif piece == -0.125:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -1.375:
+                    screen.blit(BH, (col * self.square_size, row * self.square_size))
+                elif piece == -1.875:
+                    screen.blit(BM, (col * self.square_size, row * self.square_size))
+                elif piece == -2:
+                    screen.blit(BQ, (col * self.square_size, row * self.square_size))
+                elif piece == -1.625:
+                    screen.blit(BK, (col * self.square_size, row * self.square_size))
+                elif piece == 1.125:
+                    screen.blit(WE, (col * self.square_size, row * self.square_size))
+                elif piece == 0.125:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 1.375:
+                    screen.blit(WH, (col * self.square_size, row * self.square_size))
+                elif piece == 1.875:
+                    screen.blit(WM, (col * self.square_size, row * self.square_size))
+                elif piece == 2:
+                    screen.blit(WQ, (col * self.square_size, row * self.square_size))
+                elif piece == 1.625:
+                    screen.blit(WK, (col * self.square_size, row * self.square_size))
+        # screen.blit(BE, (100, 100))
 
 
         
