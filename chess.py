@@ -40,7 +40,10 @@ class Board:
         col = mouse_x // self.square_size
         row = mouse_y // self.square_size
         if 0 <= row < 8 and 0 <= col < 8:
-            pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+            if (row + col) % 2 == 0:
+                pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+            else:
+                pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
     def draw(self, screen):
         # Draw the chess board on the screen
