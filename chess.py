@@ -111,15 +111,29 @@ class Board:
                     # white elephant
                 elif piece == 0.125:
                     screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.25:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.375:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.5:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.625:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.75:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.875:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 1:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
                     # white pawn
                 elif piece == 1.375:
                     screen.blit(WH, (col * self.square_size, row * self.square_size))
-                elif piece == -1.5:
+                elif piece == 1.5:
                     screen.blit(WH, (col * self.square_size, row * self.square_size))
                     # white horse
                 elif piece == 1.875:
                     screen.blit(WM, (col * self.square_size, row * self.square_size))
-                elif piece == -1.75:
+                elif piece == 1.75:
                     screen.blit(WM, (col * self.square_size, row * self.square_size))
                     # white minister
                 elif piece == 2:
