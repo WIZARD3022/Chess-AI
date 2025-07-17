@@ -41,7 +41,7 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-            board.draw(screen)
+        board.draw(screen)
                 
         pygame.display.flip()
 
