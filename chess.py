@@ -65,28 +65,28 @@ class Board:
                 piece = self.board[row][col]
                 if piece == -1.125:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
-                elif piece == -0.125:
-                    screen.blit(BP, (col * self.square_size, row * self.square_size))
-                elif piece == -1.375:
-                    screen.blit(BH, (col * self.square_size, row * self.square_size))
-                elif piece == -1.875:
-                    screen.blit(BM, (col * self.square_size, row * self.square_size))
-                elif piece == -2:
-                    screen.blit(BQ, (col * self.square_size, row * self.square_size))
-                elif piece == -1.625:
-                    screen.blit(BK, (col * self.square_size, row * self.square_size))
-                elif piece == 1.125:
-                    screen.blit(WE, (col * self.square_size, row * self.square_size))
-                elif piece == 0.125:
-                    screen.blit(WP, (col * self.square_size, row * self.square_size))
-                elif piece == 1.375:
-                    screen.blit(WH, (col * self.square_size, row * self.square_size))
-                elif piece == 1.875:
-                    screen.blit(WM, (col * self.square_size, row * self.square_size))
-                elif piece == 2:
-                    screen.blit(WQ, (col * self.square_size, row * self.square_size))
-                elif piece == 1.625:
-                    screen.blit(WK, (col * self.square_size, row * self.square_size))
+                # elif piece == -0.125:
+                #     screen.blit(BP, (col * self.square_size, row * self.square_size))
+                # elif piece == -1.375:
+                #     screen.blit(BH, (col * self.square_size, row * self.square_size))
+                # elif piece == -1.875:
+                #     screen.blit(BM, (col * self.square_size, row * self.square_size))
+                # elif piece == -2:
+                #     screen.blit(BQ, (col * self.square_size, row * self.square_size))
+                # elif piece == -1.625:
+                #     screen.blit(BK, (col * self.square_size, row * self.square_size))
+                # elif piece == 1.125:
+                #     screen.blit(WE, (col * self.square_size, row * self.square_size))
+                # elif piece == 0.125:
+                #     screen.blit(WP, (col * self.square_size, row * self.square_size))
+                # elif piece == 1.375:
+                #     screen.blit(WH, (col * self.square_size, row * self.square_size))
+                # elif piece == 1.875:
+                #     screen.blit(WM, (col * self.square_size, row * self.square_size))
+                # elif piece == 2:
+                #     screen.blit(WQ, (col * self.square_size, row * self.square_size))
+                # elif piece == 1.625:
+                #     screen.blit(WK, (col * self.square_size, row * self.square_size))
         # screen.blit(BE, (100, 100))
 
 
