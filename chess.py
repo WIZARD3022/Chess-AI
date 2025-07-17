@@ -63,7 +63,9 @@ class Board:
         for row in range(8):
             for col in range(8):
                 piece = self.board[row][col]
-                if -1.125 <= piece <= -1.375:
+                if piece == -1.125:
+                    screen.blit(BE, (col * self.square_size, row * self.square_size))
+                if piece == -1.375:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
                 # elif piece == -0.125:
                 #     screen.blit(BP, (col * self.square_size, row * self.square_size))
