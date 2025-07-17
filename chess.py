@@ -101,8 +101,11 @@ class Board:
                 elif piece == -1.625:
                     screen.blit(BK, (col * self.square_size, row * self.square_size))
                     # black king
-                # elif piece == 1.125:
-                #     screen.blit(WE, (col * self.square_size, row * self.square_size))
+                elif piece == 1.125:
+                    screen.blit(WE, (col * self.square_size, row * self.square_size))
+                elif piece == 1.25:
+                    screen.blit(WE, (col * self.square_size, row * self.square_size))
+                    # white elephant
                 # elif piece == 0.125:
                 #     screen.blit(WP, (col * self.square_size, row * self.square_size))
                 # elif piece == 1.375:
