@@ -6,7 +6,14 @@ class Board:
         self.height = height
         self.square_size = min(width, height) // 8
         self.board = [
-            [0.035,],
+            [-1.125,-1.375,-1.875,-2,-1.625,-1.75,-1.5,-1.25],
+            [-0.125,-0.25,-0.375,-0.5,-0.625,-0.75,-0.875,-1],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0.125,0.25,0.375,0.5,0.625,0.75,0.875,1],
+            [1.125,1.375,1.875,2,1.625,1.75,1.5,1.25]
         ]
         self.init_board(screen)
 
@@ -19,6 +26,7 @@ class Board:
     def draw(self, screen):
         # Draw the chess board on the screen
         for row in range(8):
+            print(f"Drawing row {self.board[row]}")
             for col in range(8):
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
                 pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
