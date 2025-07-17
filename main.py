@@ -18,6 +18,7 @@ def main():
     FPS = 60
 
     board = Board(WIDTH, HEIGHT, screen)
+    board.init_board(screen)
 
     # Game Loop
     running = True
@@ -41,9 +42,9 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-    board.draw(screen)
+        board.draw(screen)
                 
-    pygame.display.flip()
+        pygame.display.flip()
 
 
 
