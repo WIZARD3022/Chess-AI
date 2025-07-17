@@ -85,8 +85,11 @@ class Board:
                 elif piece == -1:
                     screen.blit(BP, (col * self.square_size, row * self.square_size))
                     # Black pawn
-                # elif piece == -1.375:
-                #     screen.blit(BH, (col * self.square_size, row * self.square_size))
+                elif piece == -1.375:
+                    screen.blit(BH, (col * self.square_size, row * self.square_size))
+                elif piece == -1.5:
+                    screen.blit(BH, (col * self.square_size, row * self.square_size))
+                    # black horse
                 # elif piece == -1.875:
                 #     screen.blit(BM, (col * self.square_size, row * self.square_size))
                 # elif piece == -2:
