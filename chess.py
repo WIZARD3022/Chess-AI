@@ -101,22 +101,33 @@ class Board:
                 elif piece == -1.625:
                     screen.blit(BK, (col * self.square_size, row * self.square_size))
                     # black king
+
+
+
                 elif piece == 1.125:
                     screen.blit(WE, (col * self.square_size, row * self.square_size))
                 elif piece == 1.25:
                     screen.blit(WE, (col * self.square_size, row * self.square_size))
                     # white elephant
-                # elif piece == 0.125:
-                #     screen.blit(WP, (col * self.square_size, row * self.square_size))
-                # elif piece == 1.375:
-                #     screen.blit(WH, (col * self.square_size, row * self.square_size))
-                # elif piece == 1.875:
-                #     screen.blit(WM, (col * self.square_size, row * self.square_size))
-                # elif piece == 2:
-                #     screen.blit(WQ, (col * self.square_size, row * self.square_size))
-                # elif piece == 1.625:
-                #     screen.blit(WK, (col * self.square_size, row * self.square_size))
-        # screen.blit(BE, (100, 100))
+                elif piece == 0.125:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                    # white pawn
+                elif piece == 1.375:
+                    screen.blit(WH, (col * self.square_size, row * self.square_size))
+                elif piece == -1.5:
+                    screen.blit(WH, (col * self.square_size, row * self.square_size))
+                    # white horse
+                elif piece == 1.875:
+                    screen.blit(WM, (col * self.square_size, row * self.square_size))
+                elif piece == -1.75:
+                    screen.blit(WM, (col * self.square_size, row * self.square_size))
+                    # white minister
+                elif piece == 2:
+                    screen.blit(WQ, (col * self.square_size, row * self.square_size))
+                    # white queen
+                elif piece == 1.625:
+                    screen.blit(WK, (col * self.square_size, row * self.square_size))
+                    # white king
 
 
         
