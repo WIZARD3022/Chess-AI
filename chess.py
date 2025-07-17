@@ -27,6 +27,15 @@ class Board:
 
         pass
 
+    def select_square(self, mouse_x, mouse_y):
+        col = mouse_x // self.square_size
+        row = mouse_y // self.square_size
+        if 0 <= row < 8 and 0 <= col < 8:
+            piece = self.board[row][col]
+            print(f"Selected piece at ({row}, {col}): {piece}")
+        else:
+            print("Clicked outside the board")
+
     def draw(self, screen):
         # Draw the chess board on the screen
 

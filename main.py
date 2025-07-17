@@ -50,6 +50,7 @@ def main():
                     col = mouse_x // board.square_size
                     row = mouse_y // board.square_size
                     print(f"Clicked on square: ({row}, {col})")
+                    board.select_square(mouse_x, mouse_y)
         board.draw(screen)
                 
         pygame.display.flip()
