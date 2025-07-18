@@ -49,6 +49,7 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
+                print(self.get_valid_moves_custom((row, col)))
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
             else:
@@ -79,6 +80,111 @@ class Board:
         piece = self.board[start_row][start_col]
         self.board[start_row][start_col] = 0
         self.board[end_row][end_col] = piece
+
+    def get_valid_moves_custom(self, pos):
+        row, col = pos
+        piece = self.board[row][col]
+
+        if piece == 0:
+            return []
+
+        is_white = piece > 0
+        moves = []
+
+        def is_valid(r, c):
+            return 0 <= r < 8 and 0 <= c < 8
+
+        def is_empty(r, c):
+            return self.board[r][c] == 0
+
+        def is_opponent(r, c):
+            return self.board[r][c] < 0 if is_white else self.board[r][c] > 0
+
+        # Pawn Logic
+        if abs(piece) >= 0.125 and abs(piece) <= 1:
+            direction = -1 if is_white else 1
+            start_row = 6 if is_white else 1
+
+            # Forward move
+            if is_valid(row + direction, col) and is_empty(row + direction, col):
+                moves.append((row + direction, col))
+                # Two-square move from start
+                if row == start_row and is_empty(row + 2 * direction, col):
+                    moves.append((row + 2 * direction, col))
+
+            # Diagonal captures
+            for dc in [-1, 1]:
+                r, c = row + direction, col + dc
+                if is_valid(r, c) and is_opponent(r, c):
+                    moves.append((r, c))
+
+        # Rook Logic
+        elif abs(piece) in [1.125, 1.25]:
+            directions = [(1,0), (-1,0), (0,1), (0,-1)]
+            for dr, dc in directions:
+                r, c = row + dr, col + dc
+                while is_valid(r, c):
+                    if is_empty(r, c):
+                        moves.append((r, c))
+                    elif is_opponent(r, c):
+                        moves.append((r, c))
+                        break
+                    else:
+                        break
+                    r += dr
+                    c += dc
+
+        # Knight Logic
+        elif abs(piece) in [1.375, 1.5]:
+            deltas = [(2,1),(1,2),(-1,2),(-2,1),(-2,-1),(-1,-2),(1,-2),(2,-1)]
+            for dr, dc in deltas:
+                r, c = row + dr, col + dc
+                if is_valid(r, c) and (is_empty(r, c) or is_opponent(r, c)):
+                    moves.append((r, c))
+
+        # Bishop (Minister) Logic
+        elif abs(piece) in [1.875, 1.75]:
+            directions = [(1,1), (-1,-1), (1,-1), (-1,1)]
+            for dr, dc in directions:
+                r, c = row + dr, col + dc
+                while is_valid(r, c):
+                    if is_empty(r, c):
+                        moves.append((r, c))
+                    elif is_opponent(r, c):
+                        moves.append((r, c))
+                        break
+                    else:
+                        break
+                    r += dr
+                    c += dc
+
+        # Queen Logic
+        elif abs(piece) == 2:
+            directions = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (1,-1), (-1,1)]
+            for dr, dc in directions:
+                r, c = row + dr, col + dc
+                while is_valid(r, c):
+                    if is_empty(r, c):
+                        moves.append((r, c))
+                    elif is_opponent(r, c):
+                        moves.append((r, c))
+                        break
+                    else:
+                        break
+                    r += dr
+                    c += dc
+
+        # King Logic
+        elif abs(piece) == 1.625:
+            directions = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (1,-1), (-1,1)]
+            for dr, dc in directions:
+                r, c = row + dr, col + dc
+                if is_valid(r, c) and (is_empty(r, c) or is_opponent(r, c)):
+                    moves.append((r, c))
+            # (Optional) Castling can be added here
+
+        return moves
+
 
     def draw(self, screen):
         # Draw the chess board on the screen
