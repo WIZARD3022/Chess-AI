@@ -4,6 +4,7 @@ class Board:
     def __init__(self, width, height, screen):
         self.width = width
         self.height = height
+        self.turn = "white"  # or 'black'
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125,-1.375,-1.875,-2,-1.625,-1.75,-1.5,-1.25],
@@ -33,9 +34,18 @@ class Board:
         if 0 <= row < 8 and 0 <= col < 8:
             piece = self.board[row][col]
             print(f"Selected piece at ({row}, {col}): {piece}")
-            pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+            if piece > 0:
+                moving = 'white'
+            elif piece < 0:
+                moving = 'black'
+            if moving == self.turn:
+                print(f"Moving piece: {piece} for {self.turn}")
+                pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+                self.turn = 'black' if self.turn == 'white' else 'white'
         else:
             print("Clicked outside the board")
+
+
     def unselect_square(self, mouse_x, mouse_y,screen):
         col = mouse_x // self.square_size
         row = mouse_y // self.square_size
@@ -44,6 +54,22 @@ class Board:
                 pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
             else:
                 pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+
+    def start_game(self):
+        # Initialize the game state and pieces
+        END = False
+        while END:
+            print("Game is running")
+            print(f"Current turn: {turn} select a piece")
+            turn = 'black' if turn == 'white' else 'white'
+
+        pass
+
+    def move_piece(self, start_row, start_col, end_row, end_col):
+        # Move a piece from (start_row, start_col) to (end_row, end_col)
+        piece = self.board[start_row][start_col]
+        self.board[start_row][start_col] = 0
+        self.board[end_row][end_col] = piece
 
     def draw(self, screen):
         # Draw the chess board on the screen
