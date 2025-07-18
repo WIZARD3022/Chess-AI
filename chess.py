@@ -57,7 +57,6 @@ class Board:
         else:
             print("Clicked outside the board")
 
-
     def unselect_square(self, col, row, screen):
         if 0 <= row < 8 and 0 <= col < 8:
             if (row + col) % 2 == 0:
