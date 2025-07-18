@@ -51,6 +51,7 @@ def main():
                     row = mouse_y // board.square_size
                     print(f"Clicked on square: ({row}, {col})")
                     board.select_square(mouse_x, mouse_y, screen)
+
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     board.unselect_square(mouse_x, mouse_y, screen)

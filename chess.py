@@ -5,6 +5,8 @@ class Board:
         self.width = width
         self.height = height
         self.turn = "white"  # or 'black'
+        self.old_x = None
+        self.old_y = None
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125,-1.375,-1.875,-2,-1.625,-1.75,-1.5,-1.25],
@@ -42,6 +44,8 @@ class Board:
             if moving == self.turn:
                 print(f"Moving piece: {piece} for {self.turn}")
                 pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+                self.old_x = col
+                self.old_y = row
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
             else:
