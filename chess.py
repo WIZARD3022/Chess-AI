@@ -44,6 +44,8 @@ class Board:
             if moving == self.turn:
                 print(f"Moving piece: {piece} for {self.turn}")
                 pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+                if self.old_x is not None and self.old_y is not None:
+                    self.unselect_square(self.old_x, self.old_y, screen)
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
@@ -55,9 +57,7 @@ class Board:
             print("Clicked outside the board")
 
 
-    def unselect_square(self, mouse_x, mouse_y,screen):
-        col = mouse_x // self.square_size
-        row = mouse_y // self.square_size
+    def unselect_square(self, col, row, screen):
         if 0 <= row < 8 and 0 <= col < 8:
             if (row + col) % 2 == 0:
                 pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
