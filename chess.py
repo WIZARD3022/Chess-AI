@@ -77,6 +77,8 @@ class Board:
 
     def move_piece(self, start_row, start_col, end_row, end_col):
         # Move a piece from (start_row, start_col) to (end_row, end_col)
+        if (end_col, end_row) in self.valid:
+            print(f"Moving piece from ({start_row}, {start_col}) to ({end_row}, {end_col})")
         piece = self.board[start_row][start_col]
         self.board[start_row][start_col] = 0
         self.board[end_row][end_col] = piece
