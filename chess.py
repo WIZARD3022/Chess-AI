@@ -34,6 +34,7 @@ class Board:
         if 0 <= row < 8 and 0 <= col < 8:
             piece = self.board[row][col]
             print(f"Selected piece at ({row}, {col}): {piece}")
+            moving = 0
             if piece > 0:
                 moving = 'white'
             elif piece < 0:
