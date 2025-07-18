@@ -83,12 +83,13 @@ class Board:
 
     def higlight_square(self, row, col, screen):
         # Highlight the square at (row, col) with a red border
-        for x, y in self.valid:
-            if 0 <= x < 8 and 0 <= y < 8:
-                if (x + y) % 2 == 0:
-                    pygame.draw.circle(screen, (255, 255, 255), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
-                else:
-                    pygame.draw.circle(screen, (50, 100, 150), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+        if self.valid is not None:
+            for x, y in self.valid:
+                if 0 <= x < 8 and 0 <= y < 8:
+                    if (x + y) % 2 == 0:
+                        pygame.draw.circle(screen, (255, 255, 255), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+                    else:
+                        pygame.draw.circle(screen, (50, 100, 150), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
         self.valid = self.get_valid_moves_custom((row, col))
         for x, y in self.valid:
             if 0 <= x < 8 and 0 <= y < 8:
