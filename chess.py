@@ -42,15 +42,25 @@ class Board:
                 moving = 'white'
             elif piece < 0:
                 moving = 'black'
-            if moving == self.turn:
-                print(f"Moving piece: {piece} for {self.turn}")
-                pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
-                if self.old_x is not None and self.old_y is not None:
-                    self.unselect_square(self.old_x, self.old_y, screen)
+                
+            print(f"Moving piece: {piece} for {self.turn}")
+            pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+            if self.old_x is not None and self.old_y is not None:
+                self.unselect_square(self.old_x, self.old_y, screen)
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
                 print(f"valid moves :{self.higlight_square(row, col, screen)}")
+            if piece == 0:
+                print("No piece selected")
+                self.old_x = None
+                self.old_y = None
+                self.valid = None
+                self.unselect_square(col, row, screen)
+                # self.unhiglight_square(row, col, screen)
+            if moving == self.turn:
+                if (col, row) in self.valid:
+                    print(f"Moving piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
             else:
@@ -77,8 +87,7 @@ class Board:
 
     def move_piece(self, start_row, start_col, end_row, end_col):
         # Move a piece from (start_row, start_col) to (end_row, end_col)
-        if (end_col, end_row) in self.valid:
-            print(f"Moving piece from ({start_row}, {start_col}) to ({end_row}, {end_col})")
+        
         piece = self.board[start_row][start_col]
         self.board[start_row][start_col] = 0
         self.board[end_row][end_col] = piece
