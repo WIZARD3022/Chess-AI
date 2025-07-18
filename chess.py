@@ -80,6 +80,15 @@ class Board:
         self.board[start_row][start_col] = 0
         self.board[end_row][end_col] = piece
 
+    def higlight_square(self, row, col, screen):
+        # Highlight the square at (row, col) with a red border
+        for x, y in self.get_valid_moves_custom((row, col)):
+            if 0 <= x < 8 and 0 <= y < 8:
+                if (x + y) % 2 == 0:
+                    pygame.draw.rect(screen, (255, 0, 0), (y * self.square_size, x * self.square_size, self.square_size, self.square_size), 3)
+                else:
+                    pygame.draw.rect(screen, (255, 0, 0), (y * self.square_size, x * self.square_size, self.square_size, self.square_size), 3)
+
     def get_valid_moves_custom(self, pos):
         row, col = pos
         piece = self.board[row][col]
