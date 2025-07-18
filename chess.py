@@ -1,5 +1,5 @@
 import pygame
-
+GREEN = (0, 255, 0)
 class Board:
     def __init__(self, width, height, screen):
         self.width = width
@@ -84,7 +84,7 @@ class Board:
         # Highlight the square at (row, col) with a red border
         for x, y in self.get_valid_moves_custom((row, col)):
             if 0 <= x < 8 and 0 <= y < 8:
-                    pygame.draw.circle(screen, (255, 0, 0), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+                    pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
 
     def get_valid_moves_custom(self, pos):
         row, col = pos
