@@ -50,7 +50,7 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
-                print(f"valid moves :{self.higlight_square(row, col, screen)}")
+            print(f"valid moves :{self.higlight_square(row, col, screen)}")
             if piece == 0:
                 print("No piece selected")
                 self.old_x = None
