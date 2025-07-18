@@ -59,7 +59,10 @@ class Board:
 
     def unselect_square(self, col, row, screen):
         if 0 <= row < 8 and 0 <= col < 8:
-            pygame.draw.circle(screen, (0, 0, 0), (col * self.square_size + self.square_size // 2, row * self.square_size + self.square_size // 2), 10)
+            if (row + col) % 2 == 0:
+                pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+            else:
+                pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
     def start_game(self):
         # Initialize the game state and pieces
@@ -81,10 +84,7 @@ class Board:
         # Highlight the square at (row, col) with a red border
         for x, y in self.get_valid_moves_custom((row, col)):
             if 0 <= x < 8 and 0 <= y < 8:
-                if (x + y) % 2 == 0:
-                    pygame.draw.rect(screen, (255, 0, 0), (y * self.square_size, x * self.square_size, self.square_size, self.square_size), 3)
-                else:
-                    pygame.draw.rect(screen, (255, 0, 0), (y * self.square_size, x * self.square_size, self.square_size, self.square_size), 3)
+                    pygame.draw.circle(screen, (255, 0, 0), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
 
     def get_valid_moves_custom(self, pos):
         row, col = pos
