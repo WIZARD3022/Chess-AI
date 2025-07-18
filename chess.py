@@ -46,6 +46,7 @@ class Board:
                 pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
                 self.old_x = col
                 self.old_y = row
+                print(f"Old position set to: ({self.old_y}, {self.old_x})")
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
             else:
