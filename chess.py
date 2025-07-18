@@ -49,7 +49,7 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
-                print(f"valid moves :{self.get_valid_moves_custom((row, col))}")
+                print(f"valid moves :{self.higlight_square(row, col, screen)}")
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
             else:
