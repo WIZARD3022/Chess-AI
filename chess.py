@@ -7,6 +7,7 @@ class Board:
         self.turn = "white"  # or 'black'
         self.old_x = None
         self.old_y = None
+        self.valid = None
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125,-1.375,-1.875,-2,-1.625,-1.75,-1.5,-1.25],
