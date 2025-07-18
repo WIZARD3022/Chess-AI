@@ -63,7 +63,6 @@ class Board:
             print(f"Current turn: {turn} select a piece")
             turn = 'black' if turn == 'white' else 'white'
 
-
         pass
 
     def move_piece(self, start_row, start_col, end_row, end_col):
