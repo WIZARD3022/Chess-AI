@@ -43,6 +43,8 @@ class Board:
                 pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
                 self.move_piece(row, col, row, col)  # Example move logic
                 self.turn = 'black' if self.turn == 'white' else 'white'
+            else:
+                print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
         else:
             print("Clicked outside the board")
 
