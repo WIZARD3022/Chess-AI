@@ -59,10 +59,7 @@ class Board:
 
     def unselect_square(self, col, row, screen):
         if 0 <= row < 8 and 0 <= col < 8:
-            if (row + col) % 2 == 0:
-                pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
-            else:
-                pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+            pygame.draw.circle(screen, (0, 0, 0), (col * self.square_size + self.square_size // 2, row * self.square_size + self.square_size // 2), 10)
 
     def start_game(self):
         # Initialize the game state and pieces
