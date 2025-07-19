@@ -109,6 +109,7 @@ class Board:
         for x, y in self.valid:
             if 0 <= x < 8 and 0 <= y < 8:
                     pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+        return self.valid
 
     def dashboard(self, screen):
         # Draw the dashboard with game information
