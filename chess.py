@@ -69,6 +69,7 @@ class Board:
                     print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
                 # if piece == 0:
                 self.higlight_square(row, col, screen)
+                print(f"Valid moves: {self.valid}")
         else:
             print("Clicked outside the board")
 
