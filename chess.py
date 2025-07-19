@@ -70,7 +70,12 @@ class Board:
     def capture_piece(self, captured_piece, row, col):
         # For now, just print what was captured
         print(f"Captured piece {captured_piece} at ({row}, {col})")
-        
+        if captured_piece < 0:
+            print("Captured a black piece")
+            self.point[0] += abs(captured_piece)
+        else:
+            print("Captured a white piece")
+            self.point[1] += abs(captured_piece)
         # You could later store captured pieces like this:
         # self.captured_pieces.append((captured_piece, row, col))
 
@@ -159,6 +164,8 @@ class Board:
         pygame.draw.rect(screen, (0, 0, 0), (900, 0, 550, 800))
         text = font.render(f"Turn: {self.turn}, Selected: {self.old_x, self.old_y}", True, (255, 255, 255))
         screen.blit(text, (950, 50))
+        text = font.render(f"Black Score: {self.point[1]}, Black Score: {self.point[1]}", True, (255, 255, 255))
+        screen.blit(text, (950, 90))
 
 
     def draw(self, screen):
