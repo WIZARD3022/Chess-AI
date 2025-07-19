@@ -247,7 +247,7 @@ class Board:
 
     def is_stalemate(self, color):
         if self.is_king_in_check(color):
-            return False  # Can't be stalemate if in check
+            return True  # Can't be stalemate if in check
 
         for row in range(8):
             for col in range(8):
@@ -259,8 +259,8 @@ class Board:
                         temp_board.board[move[0]][move[1]] = piece
                         temp_board.board[row][col] = 0
                         if not temp_board.is_king_in_check(color):
-                            return False  # Found a legal move
-        return True  # No legal moves and not in check → stalemate
+                            return True  # Found a legal move
+        return False  # No legal moves and not in check → stalemate
 
     def draw(self, screen):
         # Draw the chess board on the screen
