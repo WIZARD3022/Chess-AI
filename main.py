@@ -9,7 +9,7 @@ def main():
     pygame.init()
 
     # Screen settings
-    WIDTH, HEIGHT = 1400, 800
+    WIDTH, HEIGHT = 1450, 800
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     font = pygame.font.SysFont(None, 16)
 
