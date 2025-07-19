@@ -221,7 +221,7 @@ class Board:
             for col in range(8):
                 piece = self.board[row][col]
                 if piece != 0 and piece * color < 0:  # Opponent's piece
-                    moves = self.get_valid_moves_custom(row, col, ignore_checks=True)
+                    moves = self.get_valid_moves_custom((row, col))
                     for move in moves:
                         if move == (king_row, king_col):
                             return True  # King is under attack
