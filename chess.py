@@ -322,6 +322,8 @@ class Board:
 
         self.board[end_row][end_col] = moving_piece
         self.board[start_row][start_col] = 0
+        for i in range(8):
+            print(self.board[i])
         self.draw(self.screen)
 
     def capture_piece(self, captured_piece, row, col):
