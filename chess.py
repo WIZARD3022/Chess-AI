@@ -314,8 +314,25 @@ class Board:
         pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
     def move_piece(self, start_row, start_col, end_row, end_col):
-        self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], 0
+        moving_piece = self.board[start_row][start_col]
+        target_piece = self.board[end_row][end_col]
+
+        if target_piece != 0 and (moving_piece * target_piece < 0):  # Capturing enemy
+            self.capture_piece(target_piece, end_row, end_col)
+
+        self.board[end_row][end_col] = moving_piece
+        self.board[start_row][start_col] = 0
         self.draw(self.screen)
+
+    def capture_piece(self, captured_piece, row, col):
+        # For now, just print what was captured
+        print(f"Captured piece {captured_piece} at ({row}, {col})")
+        
+        # You could later store captured pieces like this:
+        # self.captured_pieces.append((captured_piece, row, col))
+
+        # Optional: flash or animate capture location
+        pygame.draw.rect(self.screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
     def higlight_square(self, row, col, screen):
         for x, y in self.valid:
