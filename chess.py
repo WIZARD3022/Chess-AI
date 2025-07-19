@@ -19,6 +19,7 @@ class Board:
             [0.125,0.25,0.375,0.5,0.625,0.75,0.875,1],
             [1.125,1.375,1.875,2,1.625,1.75,1.5,1.25]
         ]
+        self.init_board(screen)
 
 
     def init_board(self, screen):

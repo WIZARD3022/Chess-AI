@@ -18,7 +18,7 @@ def main():
     FPS = 60
 
     board = Board(WIDTH, HEIGHT, screen)
-    board.init_board(screen)
+    # board.init_board(screen)
 
     # Game Loop
     running = True
