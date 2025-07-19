@@ -29,7 +29,6 @@ class Board:
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
                 pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
-
         pass
 
     def select_square(self, mouse_x, mouse_y,screen):
