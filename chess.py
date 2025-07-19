@@ -303,6 +303,12 @@ class Board:
                     self.turn = 'black' if self.turn == 'white' else 'white'
                     self.old_x, self.old_y, self.valid = None, None, []
                 return
+            else:
+                if (row, col) in self.valid:
+                    self.move_piece(self.old_y, self.old_x, row, col)
+                    self.turn = 'black' if self.turn == 'white' else 'white'
+                    self.old_x, self.old_y, self.valid = None, None, []
+                    return
             moving = 'white' if piece > 0 else 'black'
             if moving == self.turn:
                 self.old_x = col
