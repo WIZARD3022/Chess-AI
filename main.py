@@ -52,21 +52,6 @@ def main():
                     # print(f"Clicked on square: ({row}, {col})")
                     board.select_square(mouse_x, mouse_y, screen)
 
-            # elif event.type == pygame.MOUSEBUTTONUP:
-            #     if event.button == 1:
-            #         board.unselect_square(mouse_x, mouse_y, screen)
-        # board.draw(screen)
-        # now = 1 if board.turn == "white" else -1
-        # if board.is_checkmate(now):
-        #     board.game_end = True
-        #     winner = "White" if now == -1 else "Black"
-        #     print(f"{winner} wins by checkmate!")
-        #     board.game_over(winner)
-        # elif board.is_stalemate(now):
-        #     board.game_end = True
-        #     print("Game over by stalemate!")
-        #     board.game_over("No one")
-
         board.dashboard(screen)
                 
         pygame.display.flip()

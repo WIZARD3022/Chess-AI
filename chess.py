@@ -246,19 +246,19 @@ class Board:
         self.screen.blit(text, text_rect)
 
     def is_stalemate(self, color):
-        if self.is_check(color):
-            return False  # Not stalemate if the player is in check
+        if self.is_king_in_check(color):
+            return False  # Can't be stalemate if in check
 
-        # Check if the player has any legal moves
         for row in range(8):
             for col in range(8):
                 piece = self.board[row][col]
-                if piece and piece[0] == color:
-                    moves = self.get_valid_moves(row, col)
-                    for move in moves:
+                if piece != 0 and (piece > 0) == (color == 1):  # own piece
+                    valid_moves = self.get_valid_moves_custom((row, col))
+                    for move in valid_moves:
                         temp_board = copy.deepcopy(self)
-                        temp_board.make_move((row, col), move)
-                        if not temp_board.is_check(color):
+                        temp_board.board[move[0]][move[1]] = piece
+                        temp_board.board[row][col] = 0
+                        if not temp_board.is_king_in_check(color):
                             return False  # Found a legal move
         return True  # No legal moves and not in check → stalemate
 
