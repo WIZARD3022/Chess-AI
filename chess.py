@@ -55,11 +55,11 @@ class Board:
                     # self.unhiglight_square(row, col, screen)
                 print(f"Valid moves: {self.valid}")
                 if self.valid is not None:
-                    if (col, row) in self.valid:
+                    for (col, row) in self.valid:
                         print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
                         self.move_piece(row, col, row, col)  # Example move logic
                         self.turn = 'black' if self.turn == 'white' else 'white'
-                    elif piece == 0:
+                    if piece == 0:
                         print("No piece selected")
                         self.old_x = None
                         self.old_y = None
