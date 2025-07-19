@@ -96,6 +96,7 @@ class Board:
         piece = self.board[start_row][start_col]
         self.board[start_row][start_col] = 0
         self.board[end_row][end_col] = piece
+        print(self.board)
 
     def higlight_square(self, row, col, screen):
         # Highlight the square at (row, col) with a red border
