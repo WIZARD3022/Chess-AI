@@ -55,7 +55,7 @@ def main():
             # elif event.type == pygame.MOUSEBUTTONUP:
             #     if event.button == 1:
             #         board.unselect_square(mouse_x, mouse_y, screen)
-        board.draw(screen)
+        # board.draw(screen)
         board.dashboard(screen)
                 
         pygame.display.flip()

@@ -282,6 +282,7 @@ class Board:
             [1.125, 1.375, 1.875, 2, 1.625, 1.75, 1.5, 1.25]
         ]
         self.init_board(screen)
+        self.draw(screen)
 
     def init_board(self, screen):
         for row in range(8):
