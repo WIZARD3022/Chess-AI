@@ -67,6 +67,12 @@ class Board:
             print(self.board[i])
         self.draw(self.screen)
 
+        if self.is_checkmate(1):  # White
+            print("White is in checkmate!")
+        elif self.is_checkmate(-1):  # Black
+            print("Black is in checkmate!")
+
+
     def capture_piece(self, captured_piece, row, col):
         # For now, just print what was captured
         print(f"Captured piece {captured_piece} at ({row}, {col})")
@@ -167,6 +173,61 @@ class Board:
         text2 = font.render(f"Black Score: {self.point[1]}, Black Score: {self.point[0]}", True, (255, 255, 255))
         screen.blit(text2, (950, 90))
 
+    def is_checkmate(self, color):
+        """
+        Check if the player of the given color is in checkmate.
+        color = 1 for white, -1 for black
+        """
+        if not self.is_king_in_check(color):
+            return False  # Not in check, so can't be checkmate
+
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece != 0 and (piece * color > 0):  # Own piece
+                    valid_moves = self.get_valid_moves_custom(row, col)
+                    for move in valid_moves:
+                        end_row, end_col = move
+                        # Simulate move
+                        original_piece = self.board[end_row][end_col]
+                        self.board[end_row][end_col] = piece
+                        self.board[row][col] = 0
+
+                        in_check = self.is_king_in_check(color)
+
+                        # Undo move
+                        self.board[row][col] = piece
+                        self.board[end_row][end_col] = original_piece
+
+                        if not in_check:
+                            return False  # Found a move that gets out of check
+
+        return True  # No moves get out of check -> checkmate
+
+    def is_king_in_check(self, color):
+        king_pos = None
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece == 6 * color:  # 6 for King, 1 for white, -1 for black
+                    king_pos = (row, col)
+                    break
+
+        if king_pos is None:
+            return True  # King is not on board — treated as checkmate
+
+        king_row, king_col = king_pos
+
+        # Check all opponent pieces and see if any can attack the king
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece != 0 and piece * color < 0:  # Opponent's piece
+                    moves = self.get_valid_moves_custom(row, col, ignore_checks=True)
+                    for move in moves:
+                        if move == (king_row, king_col):
+                            return True  # King is under attack
+        return False
 
     def draw(self, screen):
         # Draw the chess board on the screen
