@@ -60,7 +60,6 @@ class Board:
                     self.unselect_square(col, row, screen)
                     # self.unhiglight_square(row, col, screen)
 
-            
                 if self.valid is not None:
                     if (col, row) in self.valid:
                         print(f"Moving piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
