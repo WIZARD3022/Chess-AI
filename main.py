@@ -56,6 +56,16 @@ def main():
             #     if event.button == 1:
             #         board.unselect_square(mouse_x, mouse_y, screen)
         # board.draw(screen)
+        if board.is_checkmate(board.turn):
+            board.game_over = True
+            winner = "White" if board.turn == -1 else "Black"
+            print(f"{winner} wins by checkmate!")
+            board.game_over(winner)
+        elif board.is_stalemate(board.turn):
+            board.game_over = True
+            print("Game over by stalemate!")
+            board.game_over("No one")
+
         board.dashboard(screen)
                 
         pygame.display.flip()

@@ -1,4 +1,6 @@
 import pygame
+import copy
+import sys
 GREEN = (0, 255, 0)
 class Board:
     def __init__(self, width, height, screen):
@@ -9,6 +11,7 @@ class Board:
         self.old_y = None
         self.valid = []
         self.screen = screen
+        self.game_over = False
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125, -1.375, -1.875, -2, -1.625, -1.75, -1.5, -1.25],
@@ -66,11 +69,6 @@ class Board:
         for i in range(8):
             print(self.board[i])
         self.draw(self.screen)
-
-        if self.is_checkmate(1):  # White
-            print("White is in checkmate!")
-        elif self.is_checkmate(-1):  # Black
-            print("Black is in checkmate!")
 
 
     def capture_piece(self, captured_piece, row, col):
@@ -228,6 +226,30 @@ class Board:
                         if move == (king_row, king_col):
                             return True  # King is under attack
         return False
+    
+    def game_over(self, winner):
+        pygame.draw.rect(self.screen, (0, 0, 0), (0, 0, self.width, self.height))
+        font = pygame.font.SysFont(None, 48)
+        text = font.render(f"Game over {winner} wins", True, (255, 0, 0))
+        text_rect = text.get_rect(center=(self.width // 2, self.height // 2))
+        self.screen.blit(text, text_rect)
+
+    def is_stalemate(self, color):
+        if self.is_check(color):
+            return False  # Not stalemate if the player is in check
+
+        # Check if the player has any legal moves
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece and piece[0] == color:
+                    moves = self.get_valid_moves(row, col)
+                    for move in moves:
+                        temp_board = copy.deepcopy(self)
+                        temp_board.make_move((row, col), move)
+                        if not temp_board.is_check(color):
+                            return False  # Found a legal move
+        return True  # No legal moves and not in check → stalemate
 
     def draw(self, screen):
         # Draw the chess board on the screen
