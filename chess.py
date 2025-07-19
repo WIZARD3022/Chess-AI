@@ -437,7 +437,10 @@ class Board:
         for row in range(8):
             for col in range(8):
                 piece = self.board[row][col]
-                if piece == -1.125:
+                color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
+                if piece == 0:
+                    pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+                elif piece == -1.125:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
                 elif piece == -1.25:
                     screen.blit(BE, (col * self.square_size, row * self.square_size))
