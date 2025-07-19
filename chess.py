@@ -109,6 +109,13 @@ class Board:
             if 0 <= x < 8 and 0 <= y < 8:
                     pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
 
+    def dashboard(self, screen):
+        # Draw the dashboard with game information
+        font = pygame.font.SysFont(None, 36)
+        text = font.render(f"Turn: {self.turn}", True, (255, 255, 255))
+        screen.blit(text, (10, 10))
+        # Add more dashboard elements as needed
+
     def get_valid_moves_custom(self, pos):
         row, col = pos
         piece = self.board[row][col]
