@@ -57,7 +57,7 @@ class Board:
                 if self.valid is not None:
                     for (col, row) in self.valid:
                         print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
-                        self.move_piece(self.old_x, self.old_y, row, col)  # Example move logic
+                        self.move_piece(self.old_y, self.old_x, row, col)  # Example move logic
                         self.turn = 'black' if self.turn == 'white' else 'white'
                     if piece == 0:
                         print("No piece selected")
