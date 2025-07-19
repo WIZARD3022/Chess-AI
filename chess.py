@@ -20,6 +20,7 @@ class Board:
             [1.125,1.375,1.875,2,1.625,1.75,1.5,1.25]
         ]
 
+
     def init_board(self, screen):
         
         for row in range(8):
@@ -58,7 +59,7 @@ class Board:
                 self.valid = None
                 self.unselect_square(col, row, screen)
                 # self.unhiglight_square(row, col, screen)
-                
+
             if moving == self.turn:
                 if self.valid is not None:
                     if (col, row) in self.valid:
