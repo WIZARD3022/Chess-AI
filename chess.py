@@ -113,7 +113,7 @@ class Board:
         # Draw the dashboard with game information
         font = pygame.font.SysFont(None, 36)
         pygame.draw.rect(screen, (0, 0, 0), (900, 0, 550, 800))  # Dashboard background
-        text = font.render(f"Turn: {self.turn}", True, (255, 255, 255))
+        text = font.render(f"Turn: {self.turn}, old :{self.old_x,self.old_y}", True, (255, 255, 255))
         screen.blit(text, (950, 50))
         # Add more dashboard elements as needed
 
