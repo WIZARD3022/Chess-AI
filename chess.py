@@ -70,16 +70,7 @@ class Board:
             print(self.board[i])
         self.draw(self.screen)
 
-        now = 1 if self.turn == "white" else -1
-        if self.is_checkmate(now):
-            self.game_end = True
-            winner = "White" if now == -1 else "Black"
-            print(f"{winner} wins by checkmate!")
-            self.game_over(winner)
-        elif self.is_stalemate(now):
-            self.game_end = True
-            print("Game over by stalemate!")
-            self.game_over("No one")
+        
 
 
     def capture_piece(self, captured_piece, row, col):
@@ -188,7 +179,7 @@ class Board:
         color = 1 for white, -1 for black
         """
         if not self.is_king_in_check(color):
-            return True  # Not in check, so can't be checkmate
+            return False  # Not in check, so can't be checkmate
 
         for row in range(8):
             for col in range(8):
@@ -211,7 +202,7 @@ class Board:
                         if not in_check:
                             return False  # Found a move that gets out of check
 
-        return False  # No moves get out of check -> checkmate
+        return True  # No moves get out of check -> checkmate
 
     def is_king_in_check(self, color):
         king_pos = None
@@ -223,7 +214,7 @@ class Board:
                     break
 
         if king_pos is None:
-            return False  # King is not on board — treated as checkmate
+            return True  # King is not on board — treated as checkmate
 
         king_row, king_col = king_pos
 
@@ -235,8 +226,8 @@ class Board:
                     moves = self.get_valid_moves_custom((row, col))
                     for move in moves:
                         if move == (king_row, king_col):
-                            return False  # King is under attack
-        return True
+                            return True  # King is under attack
+        return False
     
     def game_over(self, winner):
         pygame.draw.rect(self.screen, (0, 0, 0), (0, 0, self.width, self.height))
@@ -246,21 +237,21 @@ class Board:
         self.screen.blit(text, text_rect)
 
     def is_stalemate(self, color):
-        if self.is_king_in_check(color):
-            return True  # Can't be stalemate if in check
+        if self.is_check(color):
+            return False  # Not stalemate if the player is in check
 
+        # Check if the player has any legal moves
         for row in range(8):
             for col in range(8):
                 piece = self.board[row][col]
-                if piece != 0 and (piece > 0) == (color == 1):  # own piece
-                    valid_moves = self.get_valid_moves_custom((row, col))
-                    for move in valid_moves:
+                if piece and piece[0] == color:
+                    moves = self.get_valid_moves(row, col)
+                    for move in moves:
                         temp_board = copy.deepcopy(self)
-                        temp_board.board[move[0]][move[1]] = piece
-                        temp_board.board[row][col] = 0
-                        if not temp_board.is_king_in_check(color):
-                            return True  # Found a legal move
-        return False  # No legal moves and not in check → stalemate
+                        temp_board.make_move((row, col), move)
+                        if not temp_board.is_check(color):
+                            return False  # Found a legal move
+        return True  # No legal moves and not in check → stalemate
 
     def draw(self, screen):
         # Draw the chess board on the screen
