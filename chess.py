@@ -58,6 +58,7 @@ class Board:
                 self.valid = None
                 self.unselect_square(col, row, screen)
                 # self.unhiglight_square(row, col, screen)
+                
             if moving == self.turn:
                 if self.valid is not None:
                     if (col, row) in self.valid:
