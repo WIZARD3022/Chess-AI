@@ -98,6 +98,7 @@ class Board:
         # self.board[start_row][start_col] = 0
         # self.board[end_row][end_col] = piece
         self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], self.board[end_row][end_col]
+        print(f"Moved piece from ({start_row}, {start_col}) to ({end_row}, {end_col})")
         for i in range(8):
             print(self.board[i])
 
