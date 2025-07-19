@@ -21,6 +21,37 @@ class Board:
         ]
         self.init_board(screen)
 
+    def select_square(self, mouse_x, mouse_y, screen):
+        col = mouse_x // self.square_size
+        row = mouse_y // self.square_size
+        if 0 <= row < 8 and 0 <= col < 8:
+            piece = self.board[row][col]
+            if piece == 0:
+                if (self.old_x is not None and self.old_y is not None and (row, col) in self.valid):
+                    self.move_piece(self.old_y, self.old_x, row, col)
+                    self.turn = 'black' if self.turn == 'white' else 'white'
+                    self.old_x, self.old_y, self.valid = None, None, []
+                return
+            moving = 'white' if piece > 0 else 'black'
+            if moving == self.turn:
+                self.old_x = col
+                self.old_y = row
+                self.valid = self.get_valid_moves_custom((row, col))
+                self.higlight_square(row, col, screen)
+
+    def unselect_square(self, col, row, screen):
+        color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
+        pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+
+    def move_piece(self, start_row, start_col, end_row, end_col):
+        self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], 0
+
+    def higlight_square(self, row, col, screen):
+        for x, y in self.valid:
+            if 0 <= x < 8 and 0 <= y < 8:
+                pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+
+
 
     def init_board(self, screen):
         
@@ -30,91 +61,91 @@ class Board:
                 color = (255, 255, 255) if (row + col) % 2 == 0 else (50, 100, 150)
                 pygame.draw.rect(screen, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
-        pass
+    #     pass
 
-    def select_square(self, mouse_x, mouse_y,screen):
-        print("-------------------------------------------------------")
-        col = mouse_x // self.square_size
-        row = mouse_y // self.square_size
-        if 0 <= row < 8 and 0 <= col < 8:
-            piece = self.board[row][col]
-            print(f"Selected piece at ({row}, {col}): {piece}")
-            moving = 0
-            if piece >= 0:
-                moving = 'white'
-            elif piece <= 0:
-                moving = 'black'
+    # def select_square(self, mouse_x, mouse_y,screen):
+    #     print("-------------------------------------------------------")
+    #     col = mouse_x // self.square_size
+    #     row = mouse_y // self.square_size
+    #     if 0 <= row < 8 and 0 <= col < 8:
+    #         piece = self.board[row][col]
+    #         print(f"Selected piece at ({row}, {col}): {piece}")
+    #         moving = 0
+    #         if piece >= 0:
+    #             moving = 'white'
+    #         elif piece <= 0:
+    #             moving = 'black'
             
-            if moving == self.turn:
-                print(f"Moving piece: {piece} for {self.turn}")
-                pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
-                if self.old_x is not None and self.old_y is not None:
-                    self.unselect_square(self.old_x, self.old_y, screen)
-                self.old_x = col
-                self.old_y = row
-                print(f"Old position set to: ({self.old_y}, {self.old_x})")
-                    # self.unhiglight_square(row, col, screen)
-                print(f"Valid moves: {self.valid}")
-                if self.valid is not None:
-                    for (col, row) in self.valid:
-                        print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
-                        self.move_piece(self.old_y, self.old_x, row, col)  # Example move logic
-                        self.turn = 'black' if self.turn == 'white' else 'white'
-                    if piece == 0:
-                        print("No piece selected")
-                        self.old_x = None
-                        self.old_y = None
-                        self.valid = None
-                        self.unselect_square(col, row, screen)
-                else:
-                    print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
-                # if piece == 0:
-                self.higlight_square(row, col, screen)
-                print(f"Valid moves: {self.valid}")
-        else:
-            print("Clicked outside the board")
+    #         if moving == self.turn:
+    #             print(f"Moving piece: {piece} for {self.turn}")
+    #             pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
+    #             if self.old_x is not None and self.old_y is not None:
+    #                 self.unselect_square(self.old_x, self.old_y, screen)
+    #             self.old_x = col
+    #             self.old_y = row
+    #             print(f"Old position set to: ({self.old_y}, {self.old_x})")
+    #                 # self.unhiglight_square(row, col, screen)
+    #             print(f"Valid moves: {self.valid}")
+    #             if self.valid is not None:
+    #                 for (col, row) in self.valid:
+    #                     print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
+    #                     self.move_piece(self.old_y, self.old_x, row, col)  # Example move logic
+    #                     self.turn = 'black' if self.turn == 'white' else 'white'
+    #                 if piece == 0:
+    #                     print("No piece selected")
+    #                     self.old_x = None
+    #                     self.old_y = None
+    #                     self.valid = None
+    #                     self.unselect_square(col, row, screen)
+    #             else:
+    #                 print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
+    #             # if piece == 0:
+    #             self.higlight_square(row, col, screen)
+    #             print(f"Valid moves: {self.valid}")
+    #     else:
+    #         print("Clicked outside the board")
 
-    def unselect_square(self, col, row, screen):
-        if 0 <= row < 8 and 0 <= col < 8:
-            if (row + col) % 2 == 0:
-                pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
-            else:
-                pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+    # def unselect_square(self, col, row, screen):
+    #     if 0 <= row < 8 and 0 <= col < 8:
+    #         if (row + col) % 2 == 0:
+    #             pygame.draw.rect(screen, (255, 255, 255), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+    #         else:
+    #             pygame.draw.rect(screen, (50, 100, 150), (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
 
-    def start_game(self):
-        # Initialize the game state and pieces
-        END = False
-        while END:
-            print("Game is running")
-            print(f"Current turn: {turn} select a piece")
-            turn = 'black' if turn == 'white' else 'white'
+    # def start_game(self):
+    #     # Initialize the game state and pieces
+    #     END = False
+    #     while END:
+    #         print("Game is running")
+    #         print(f"Current turn: {turn} select a piece")
+    #         turn = 'black' if turn == 'white' else 'white'
 
-        pass
+    #     pass
 
-    def move_piece(self, start_row, start_col, end_row, end_col):
-        # Move a piece from (start_row, start_col) to (end_row, end_col)
+    # def move_piece(self, start_row, start_col, end_row, end_col):
+    #     # Move a piece from (start_row, start_col) to (end_row, end_col)
         
-        # piece = self.board[start_row][start_col]
-        # self.board[start_row][start_col] = 0
-        # self.board[end_row][end_col] = piece
-        self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], self.board[end_row][end_col]
-        print(f"Moved piece from ({start_row}, {start_col}) to ({end_row}, {end_col})")
-        for i in range(8):
-            print(self.board[i])
+    #     # piece = self.board[start_row][start_col]
+    #     # self.board[start_row][start_col] = 0
+    #     # self.board[end_row][end_col] = piece
+    #     self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], self.board[end_row][end_col]
+    #     print(f"Moved piece from ({start_row}, {start_col}) to ({end_row}, {end_col})")
+    #     for i in range(8):
+    #         print(self.board[i])
 
-    def higlight_square(self, row, col, screen):
-        # Highlight the square at (row, col) with a red border
-        if self.valid is not None:
-            for x, y in self.valid:
-                if 0 <= x < 8 and 0 <= y < 8:
-                    if (x + y) % 2 == 0:
-                        pygame.draw.circle(screen, (255, 255, 255), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
-                    else:
-                        pygame.draw.circle(screen, (50, 100, 150), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
-        self.valid = self.get_valid_moves_custom((row, col))
-        for x, y in self.valid:
-            if 0 <= x < 8 and 0 <= y < 8:
-                    pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+    # def higlight_square(self, row, col, screen):
+    #     # Highlight the square at (row, col) with a red border
+    #     if self.valid is not None:
+    #         for x, y in self.valid:
+    #             if 0 <= x < 8 and 0 <= y < 8:
+    #                 if (x + y) % 2 == 0:
+    #                     pygame.draw.circle(screen, (255, 255, 255), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+    #                 else:
+    #                     pygame.draw.circle(screen, (50, 100, 150), (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
+    #     self.valid = self.get_valid_moves_custom((row, col))
+    #     for x, y in self.valid:
+    #         if 0 <= x < 8 and 0 <= y < 8:
+    #                 pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
 
     def dashboard(self, screen):
         # Draw the dashboard with game information
