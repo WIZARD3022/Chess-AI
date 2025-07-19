@@ -188,7 +188,7 @@ class Board:
         color = 1 for white, -1 for black
         """
         if not self.is_king_in_check(color):
-            return False  # Not in check, so can't be checkmate
+            return True  # Not in check, so can't be checkmate
 
         for row in range(8):
             for col in range(8):
@@ -211,7 +211,7 @@ class Board:
                         if not in_check:
                             return False  # Found a move that gets out of check
 
-        return True  # No moves get out of check -> checkmate
+        return False  # No moves get out of check -> checkmate
 
     def is_king_in_check(self, color):
         king_pos = None
@@ -223,7 +223,7 @@ class Board:
                     break
 
         if king_pos is None:
-            return True  # King is not on board — treated as checkmate
+            return False  # King is not on board — treated as checkmate
 
         king_row, king_col = king_pos
 
@@ -235,8 +235,8 @@ class Board:
                     moves = self.get_valid_moves_custom((row, col))
                     for move in moves:
                         if move == (king_row, king_col):
-                            return True  # King is under attack
-        return False
+                            return False  # King is under attack
+        return True
     
     def game_over(self, winner):
         pygame.draw.rect(self.screen, (0, 0, 0), (0, 0, self.width, self.height))
