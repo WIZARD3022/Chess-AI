@@ -113,7 +113,7 @@ class Board:
         # Draw the dashboard with game information
         font = pygame.font.SysFont(None, 36)
         text = font.render(f"Turn: {self.turn}", True, (255, 255, 255))
-        screen.blit(text, (500, 50))
+        screen.blit(text, (650, 50))
         # Add more dashboard elements as needed
 
     def get_valid_moves_custom(self, pos):
