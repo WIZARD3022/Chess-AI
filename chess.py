@@ -32,6 +32,7 @@ class Board:
         pass
 
     def select_square(self, mouse_x, mouse_y,screen):
+        print("-------------------------------------------------------")
         col = mouse_x // self.square_size
         row = mouse_y // self.square_size
         if 0 <= row < 8 and 0 <= col < 8:
