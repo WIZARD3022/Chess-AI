@@ -294,6 +294,7 @@ class Board:
     def select_square(self, mouse_x, mouse_y, screen):
         col = mouse_x // self.square_size
         row = mouse_y // self.square_size
+        print(f"Clicked on square: ({row}, {col})")
         if 0 <= row < 8 and 0 <= col < 8:
             piece = self.board[row][col]
             if piece == 0:
