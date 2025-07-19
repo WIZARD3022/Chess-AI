@@ -49,7 +49,7 @@ def main():
                     mouse_x, mouse_y = event.pos
                     col = mouse_x // board.square_size
                     row = mouse_y // board.square_size
-                    print(f"Clicked on square: ({row}, {col})")
+                    # print(f"Clicked on square: ({row}, {col})")
                     board.select_square(mouse_x, mouse_y, screen)
 
             # elif event.type == pygame.MOUSEBUTTONUP:
