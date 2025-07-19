@@ -258,126 +258,6 @@
 #             # (Optional) Castling can be added here
 
 #         return moves
-
-
-#     def draw(self, screen):
-#         # Draw the chess board on the screen
-
-#         BE = pygame.image.load("./image/Black_elephant.png")
-#         BE = pygame.transform.scale(BE, (100, 100))
-#         WE = pygame.image.load("./image/White_elephant.png")
-#         WE = pygame.transform.scale(WE, (100, 100))
-
-#         BH = pygame.image.load("./image/Black_horse.png")
-#         BH = pygame.transform.scale(BH, (100, 100))
-#         WH = pygame.image.load("./image/White_horse.png")
-#         WH = pygame.transform.scale(WH, (100, 100))
-
-#         BK = pygame.image.load("./image/Black_King.png")
-#         BK = pygame.transform.scale(BK, (100, 100))
-#         WK = pygame.image.load("./image/White_King.png")
-#         WK = pygame.transform.scale(WK, (100, 100))
-
-#         BM = pygame.image.load("./image/Black_minister.png")
-#         BM = pygame.transform.scale(BM, (100, 100))
-#         WM = pygame.image.load("./image/White_minister.png")
-#         WM = pygame.transform.scale(WM, (100, 100))
-
-#         BP = pygame.image.load("./image/Black_pawn.png")
-#         BP = pygame.transform.scale(BP, (100, 100))
-#         WP = pygame.image.load("./image/White_pawn.png")
-#         WP = pygame.transform.scale(WP, (100, 100))
-
-#         BQ = pygame.image.load("./image/Black_queen.png")
-#         BQ = pygame.transform.scale(BQ, (100, 100))
-#         WQ = pygame.image.load("./image/White_queen.png")
-#         WQ = pygame.transform.scale(WQ, (100, 100))
-
-#         for row in range(8):
-#             for col in range(8):
-#                 piece = self.board[row][col]
-#                 if piece == -1.125:
-#                     screen.blit(BE, (col * self.square_size, row * self.square_size))
-#                 elif piece == -1.25:
-#                     screen.blit(BE, (col * self.square_size, row * self.square_size))
-#                     # black elephant
-#                 elif piece == -0.125:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.25:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.375:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.5:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.625:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.75:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -0.875:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                 elif piece == -1:
-#                     screen.blit(BP, (col * self.square_size, row * self.square_size))
-#                     # Black pawn
-#                 elif piece == -1.375:
-#                     screen.blit(BH, (col * self.square_size, row * self.square_size))
-#                 elif piece == -1.5:
-#                     screen.blit(BH, (col * self.square_size, row * self.square_size))
-#                     # black horse
-#                 elif piece == -1.875:
-#                     screen.blit(BM, (col * self.square_size, row * self.square_size))
-#                 elif piece == -1.75:
-#                     screen.blit(BM, (col * self.square_size, row * self.square_size))
-#                     # black minister
-#                 elif piece == -2:
-#                     screen.blit(BQ, (col * self.square_size, row * self.square_size))
-#                     # black queen
-#                 elif piece == -1.625:
-#                     screen.blit(BK, (col * self.square_size, row * self.square_size))
-#                     # black king
-
-
-
-#                 elif piece == 1.125:
-#                     screen.blit(WE, (col * self.square_size, row * self.square_size))
-#                 elif piece == 1.25:
-#                     screen.blit(WE, (col * self.square_size, row * self.square_size))
-#                     # white elephant
-#                 elif piece == 0.125:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.25:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.375:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.5:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.625:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.75:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 0.875:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                 elif piece == 1:
-#                     screen.blit(WP, (col * self.square_size, row * self.square_size))
-#                     # white pawn
-#                 elif piece == 1.375:
-#                     screen.blit(WH, (col * self.square_size, row * self.square_size))
-#                 elif piece == 1.5:
-#                     screen.blit(WH, (col * self.square_size, row * self.square_size))
-#                     # white horse
-#                 elif piece == 1.875:
-#                     screen.blit(WM, (col * self.square_size, row * self.square_size))
-#                 elif piece == 1.75:
-#                     screen.blit(WM, (col * self.square_size, row * self.square_size))
-#                     # white minister
-#                 elif piece == 2:
-#                     screen.blit(WQ, (col * self.square_size, row * self.square_size))
-#                     # white queen
-#                 elif piece == 1.625:
-#                     screen.blit(WK, (col * self.square_size, row * self.square_size))
-#                     # white king
-
-
-
 import pygame
 
 GREEN = (0, 255, 0)
@@ -516,3 +396,123 @@ class Board:
         pygame.draw.rect(screen, (0, 0, 0), (900, 0, 550, 800))
         text = font.render(f"Turn: {self.turn}, Selected: {self.old_x, self.old_y}", True, (255, 255, 255))
         screen.blit(text, (950, 50))
+
+
+    def draw(self, screen):
+        # Draw the chess board on the screen
+
+        BE = pygame.image.load("./image/Black_elephant.png")
+        BE = pygame.transform.scale(BE, (100, 100))
+        WE = pygame.image.load("./image/White_elephant.png")
+        WE = pygame.transform.scale(WE, (100, 100))
+
+        BH = pygame.image.load("./image/Black_horse.png")
+        BH = pygame.transform.scale(BH, (100, 100))
+        WH = pygame.image.load("./image/White_horse.png")
+        WH = pygame.transform.scale(WH, (100, 100))
+
+        BK = pygame.image.load("./image/Black_King.png")
+        BK = pygame.transform.scale(BK, (100, 100))
+        WK = pygame.image.load("./image/White_King.png")
+        WK = pygame.transform.scale(WK, (100, 100))
+
+        BM = pygame.image.load("./image/Black_minister.png")
+        BM = pygame.transform.scale(BM, (100, 100))
+        WM = pygame.image.load("./image/White_minister.png")
+        WM = pygame.transform.scale(WM, (100, 100))
+
+        BP = pygame.image.load("./image/Black_pawn.png")
+        BP = pygame.transform.scale(BP, (100, 100))
+        WP = pygame.image.load("./image/White_pawn.png")
+        WP = pygame.transform.scale(WP, (100, 100))
+
+        BQ = pygame.image.load("./image/Black_queen.png")
+        BQ = pygame.transform.scale(BQ, (100, 100))
+        WQ = pygame.image.load("./image/White_queen.png")
+        WQ = pygame.transform.scale(WQ, (100, 100))
+
+        for row in range(8):
+            for col in range(8):
+                piece = self.board[row][col]
+                if piece == -1.125:
+                    screen.blit(BE, (col * self.square_size, row * self.square_size))
+                elif piece == -1.25:
+                    screen.blit(BE, (col * self.square_size, row * self.square_size))
+                    # black elephant
+                elif piece == -0.125:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.25:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.375:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.5:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.625:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.75:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -0.875:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                elif piece == -1:
+                    screen.blit(BP, (col * self.square_size, row * self.square_size))
+                    # Black pawn
+                elif piece == -1.375:
+                    screen.blit(BH, (col * self.square_size, row * self.square_size))
+                elif piece == -1.5:
+                    screen.blit(BH, (col * self.square_size, row * self.square_size))
+                    # black horse
+                elif piece == -1.875:
+                    screen.blit(BM, (col * self.square_size, row * self.square_size))
+                elif piece == -1.75:
+                    screen.blit(BM, (col * self.square_size, row * self.square_size))
+                    # black minister
+                elif piece == -2:
+                    screen.blit(BQ, (col * self.square_size, row * self.square_size))
+                    # black queen
+                elif piece == -1.625:
+                    screen.blit(BK, (col * self.square_size, row * self.square_size))
+                    # black king
+
+
+
+                elif piece == 1.125:
+                    screen.blit(WE, (col * self.square_size, row * self.square_size))
+                elif piece == 1.25:
+                    screen.blit(WE, (col * self.square_size, row * self.square_size))
+                    # white elephant
+                elif piece == 0.125:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.25:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.375:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.5:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.625:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.75:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 0.875:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                elif piece == 1:
+                    screen.blit(WP, (col * self.square_size, row * self.square_size))
+                    # white pawn
+                elif piece == 1.375:
+                    screen.blit(WH, (col * self.square_size, row * self.square_size))
+                elif piece == 1.5:
+                    screen.blit(WH, (col * self.square_size, row * self.square_size))
+                    # white horse
+                elif piece == 1.875:
+                    screen.blit(WM, (col * self.square_size, row * self.square_size))
+                elif piece == 1.75:
+                    screen.blit(WM, (col * self.square_size, row * self.square_size))
+                    # white minister
+                elif piece == 2:
+                    screen.blit(WQ, (col * self.square_size, row * self.square_size))
+                    # white queen
+                elif piece == 1.625:
+                    screen.blit(WK, (col * self.square_size, row * self.square_size))
+                    # white king
+
+
+
