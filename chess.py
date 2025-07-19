@@ -11,7 +11,6 @@ class Board:
         self.old_y = None
         self.valid = []
         self.screen = screen
-        self.game_end = False
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125, -1.375, -1.875, -2, -1.625, -1.75, -1.5, -1.25],
