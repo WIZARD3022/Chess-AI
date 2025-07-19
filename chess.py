@@ -317,7 +317,7 @@ class Board:
         moving_piece = self.board[start_row][start_col]
         target_piece = self.board[end_row][end_col]
 
-        if target_piece != 0 and (moving_piece * target_piece < 0):  # Capturing enemy
+        if target_piece != 0:  # Capturing enemy
             self.capture_piece(target_piece, end_row, end_col)
 
         self.board[end_row][end_col] = moving_piece
