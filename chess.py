@@ -307,6 +307,7 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 self.valid = self.get_valid_moves_custom((row, col))
+                print(f"Valid moves for piece at ({row}, {col}): {self.valid}")
                 self.higlight_square(row, col, screen)
 
     def unselect_square(self, col, row, screen):
@@ -317,7 +318,7 @@ class Board:
         moving_piece = self.board[start_row][start_col]
         target_piece = self.board[end_row][end_col]
 
-        if target_piece != 0 or moving_piece != 0:  # Capturing enemy try
+        if target_piece != 0:  # Capturing enemy try
             self.capture_piece(target_piece, end_row, end_col)
 
         self.board[end_row][end_col] = moving_piece
