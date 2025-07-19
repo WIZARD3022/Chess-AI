@@ -49,9 +49,9 @@ class Board:
                 pygame.draw.rect(screen, (255, 0, 0), (col * self.square_size, row * self.square_size, self.square_size, self.square_size), 3)
                 if self.old_x is not None and self.old_y is not None:
                     self.unselect_square(self.old_x, self.old_y, screen)
-                    self.old_x = col
-                    self.old_y = row
-                    print(f"Old position set to: ({self.old_y}, {self.old_x})")
+                self.old_x = col
+                self.old_y = row
+                print(f"Old position set to: ({self.old_y}, {self.old_x})")
                 print(f"valid moves :{self.higlight_square(row, col, screen)}")
                 if piece == 0:
                     print("No piece selected")
