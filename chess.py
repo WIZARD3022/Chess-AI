@@ -270,6 +270,7 @@ class Board:
         self.old_x = None
         self.old_y = None
         self.valid = []
+        self.screen = screen
         self.square_size = min(width, height) // 8
         self.board = [
             [-1.125, -1.375, -1.875, -2, -1.625, -1.75, -1.5, -1.25],
@@ -314,6 +315,7 @@ class Board:
 
     def move_piece(self, start_row, start_col, end_row, end_col):
         self.board[end_row][end_col], self.board[start_row][start_col] = self.board[start_row][start_col], 0
+        self.draw(self.screen)
 
     def higlight_square(self, row, col, screen):
         for x, y in self.valid:
