@@ -52,7 +52,6 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
-                self.higlight_square(row, col, screen)
                     # self.unhiglight_square(row, col, screen)
                 print(f"Valid moves: {self.valid}")
                 if self.valid is not None:
@@ -60,14 +59,16 @@ class Board:
                         print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
                         self.move_piece(row, col, row, col)  # Example move logic
                         self.turn = 'black' if self.turn == 'white' else 'white'
+                    else:
+                        print("No piece selected")
+                        self.old_x = None
+                        self.old_y = None
+                        self.valid = None
+                        self.unselect_square(col, row, screen)
                 else:
                     print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
-                if piece == 0:
-                    print("No piece selected")
-                    self.old_x = None
-                    self.old_y = None
-                    self.valid = None
-                    self.unselect_square(col, row, screen)
+                # if piece == 0:
+                self.higlight_square(row, col, screen)
         else:
             print("Clicked outside the board")
 
