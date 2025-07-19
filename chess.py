@@ -52,7 +52,7 @@ class Board:
                 self.old_x = col
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
-                print(f"valid moves :{self.higlight_square(row, col, screen)}")
+                self.higlight_square(row, col, screen)
                 if piece == 0:
                     print("No piece selected")
                     self.old_x = None
@@ -60,10 +60,10 @@ class Board:
                     self.valid = None
                     self.unselect_square(col, row, screen)
                     # self.unhiglight_square(row, col, screen)
-
+                print(f"Valid moves: {self.valid}")
                 if self.valid is not None:
                     if (col, row) in self.valid:
-                        print(f"Moving piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
+                        print(f"valid Move piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
                         self.move_piece(row, col, row, col)  # Example move logic
                         self.turn = 'black' if self.turn == 'white' else 'white'
                 else:
@@ -108,7 +108,6 @@ class Board:
         for x, y in self.valid:
             if 0 <= x < 8 and 0 <= y < 8:
                     pygame.draw.circle(screen, GREEN, (y * self.square_size + self.square_size // 2, x * self.square_size + self.square_size // 2), 10)
-        return self.valid
 
     def dashboard(self, screen):
         # Draw the dashboard with game information
