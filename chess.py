@@ -297,18 +297,18 @@ class Board:
         print(f"Clicked on square: ({row}, {col})")
         if 0 <= row < 8 and 0 <= col < 8:
             piece = self.board[row][col]
-            if piece == 0:
-                if (self.old_x is not None and self.old_y is not None and (row, col) in self.valid):
-                    self.move_piece(self.old_y, self.old_x, row, col)
-                    self.turn = 'black' if self.turn == 'white' else 'white'
-                    self.old_x, self.old_y, self.valid = None, None, []
-                return
-            else:
-                if (row, col) in self.valid:
-                    self.move_piece(self.old_y, self.old_x, row, col)
-                    self.turn = 'black' if self.turn == 'white' else 'white'
-                    self.old_x, self.old_y, self.valid = None, None, []
-                    return
+            # if piece == 0:
+            if (self.old_x is not None and self.old_y is not None and (row, col) in self.valid):
+                self.move_piece(self.old_y, self.old_x, row, col)
+                self.turn = 'black' if self.turn == 'white' else 'white'
+                self.old_x, self.old_y, self.valid = None, None, []
+            return
+            # else:
+            #     if (row, col) in self.valid:
+            #         self.move_piece(self.old_y, self.old_x, row, col)
+            #         self.turn = 'black' if self.turn == 'white' else 'white'
+            #         self.old_x, self.old_y, self.valid = None, None, []
+            #         return
             moving = 'white' if piece > 0 else 'black'
             if moving == self.turn:
                 self.old_x = col
