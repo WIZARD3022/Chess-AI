@@ -164,7 +164,7 @@ class Board:
         pygame.draw.rect(screen, (0, 0, 0), (900, 0, 550, 800))
         text1 = font.render(f"Turn: {self.turn}, Selected: {self.old_x, self.old_y}", True, (255, 255, 255))
         screen.blit(text1, (950, 50))
-        text2 = font.render(f"Black Score: {self.point[1]}, Black Score: {self.point[1]}", True, (255, 255, 255))
+        text2 = font.render(f"Black Score: {self.point[1]}, Black Score: {self.point[0]}", True, (255, 255, 255))
         screen.blit(text2, (950, 90))
 
 
