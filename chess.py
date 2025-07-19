@@ -53,12 +53,6 @@ class Board:
                 self.old_y = row
                 print(f"Old position set to: ({self.old_y}, {self.old_x})")
                 self.higlight_square(row, col, screen)
-                if piece == 0:
-                    print("No piece selected")
-                    self.old_x = None
-                    self.old_y = None
-                    self.valid = None
-                    self.unselect_square(col, row, screen)
                     # self.unhiglight_square(row, col, screen)
                 print(f"Valid moves: {self.valid}")
                 if self.valid is not None:
@@ -68,6 +62,12 @@ class Board:
                         self.turn = 'black' if self.turn == 'white' else 'white'
                 else:
                     print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
+                if piece == 0:
+                    print("No piece selected")
+                    self.old_x = None
+                    self.old_y = None
+                    self.valid = None
+                    self.unselect_square(col, row, screen)
         else:
             print("Clicked outside the board")
 
