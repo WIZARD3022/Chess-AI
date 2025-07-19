@@ -58,12 +58,12 @@ def main():
         # board.draw(screen)
         now = 1 if board.turn == "white" else -1
         if board.is_checkmate(now):
-            board.game_over = True
+            board.game_end = True
             winner = "White" if now == -1 else "Black"
             print(f"{winner} wins by checkmate!")
             board.game_over(winner)
         elif board.is_stalemate(now):
-            board.game_over = True
+            board.game_end = True
             print("Game over by stalemate!")
             board.game_over("No one")
 
