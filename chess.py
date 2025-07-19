@@ -70,6 +70,17 @@ class Board:
             print(self.board[i])
         self.draw(self.screen)
 
+        now = 1 if self.turn == "white" else -1
+        if self.is_checkmate(now):
+            self.game_end = True
+            winner = "White" if now == -1 else "Black"
+            print(f"{winner} wins by checkmate!")
+            self.game_over(winner)
+        elif self.is_stalemate(now):
+            self.game_end = True
+            print("Game over by stalemate!")
+            self.game_over("No one")
+
 
     def capture_piece(self, captured_piece, row, col):
         # For now, just print what was captured
