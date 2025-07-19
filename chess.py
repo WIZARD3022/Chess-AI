@@ -65,8 +65,8 @@ class Board:
                 if self.valid is not None:
                     if (col, row) in self.valid:
                         print(f"Moving piece from ({self.old_x}, {self.old_y}) to ({row}, {col})")
-                    self.move_piece(row, col, row, col)  # Example move logic
-                    self.turn = 'black' if self.turn == 'white' else 'white'
+                        self.move_piece(row, col, row, col)  # Example move logic
+                        self.turn = 'black' if self.turn == 'white' else 'white'
                 else:
                     print(f"Cannot move {piece} for {self.turn}, it's {moving}'s turn")
         else:
