@@ -39,9 +39,9 @@ class Board:
             piece = self.board[row][col]
             print(f"Selected piece at ({row}, {col}): {piece}")
             moving = 0
-            if piece > 0:
+            if piece >= 0:
                 moving = 'white'
-            elif piece < 0:
+            elif piece <= 0:
                 moving = 'black'
             
             if moving == self.turn:
