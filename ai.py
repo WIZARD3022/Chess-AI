@@ -6,6 +6,9 @@ WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
 BLACK = (0, 0, 0)
 
+
+
+
 class AI():
     def __init__(self, width, height, screen, b):
         self.width = width
