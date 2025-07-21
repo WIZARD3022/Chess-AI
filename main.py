@@ -41,7 +41,6 @@ def main():
                     board.select_square(mouse_x, mouse_y, screen)
 
         board.dashboard(screen)
-                
         pygame.display.flip()
 
     # Quit Pygame
