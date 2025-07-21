@@ -33,6 +33,7 @@ class AI():
         self.b3 = [random.random() for _ in range(64)]
         self.w4 = [[random.random() for _ in range(64)]  for _ in range(64)]
         self.b4 = [random.random() for _ in range(64)]
+        self.output = [[random.random() for _ in range(64)] for _ in range(2)]
         self.learning_rate = 0.1
         self.epochs = 1000
         self.draw(screen)
