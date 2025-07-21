@@ -2,7 +2,6 @@ import pygame
 import sys
 from chess import Board
 
-
 WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
 BLACK = (0, 0, 0)
